@@ -17,7 +17,7 @@ CREATE TABLE travels (
   user_id INT(11) NOT NULL,
   name VARCHAR(25),
   PRIMARY KEY (travel_id)
-  FOREIGN KEY (user_id) REFERENCES
+  FOREIGN KEY (user_id) REFERENCES USERS(id)
 );
 
 INSERT INTO travels
