@@ -6,7 +6,6 @@ import javax.persistence.*;
 public class Travel {
     @Id
     long travel_id;
-    long user_id;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
