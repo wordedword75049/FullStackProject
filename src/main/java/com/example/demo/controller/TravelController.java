@@ -13,8 +13,8 @@ public class TravelController {
     @Autowired
     private TravelService service;
 
-    @GetMapping("/allusers")
-    public List<Travel> allusers() {
+    @GetMapping("/alltravels")
+    public List<Travel> alltravels() {
         return service.getAll();
     }
 }

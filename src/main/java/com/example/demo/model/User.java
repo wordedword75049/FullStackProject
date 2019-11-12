@@ -11,6 +11,6 @@ public class User {
     @Column(name = "name")
     String name;
 
-    @OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<Travel> attachments = new HashSet<Travel>();
 }
