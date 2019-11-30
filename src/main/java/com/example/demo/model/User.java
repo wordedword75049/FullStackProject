@@ -12,5 +12,5 @@ public class User {
     String name;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    private Set<Travel> attachments = new HashSet<Travel>();
+    private Set<Travel> travels = new HashSet<Travel>();
 }

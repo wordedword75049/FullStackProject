@@ -1,75 +1,36 @@
 import React from 'react';
 // eslint-disable-next-line no-unused-vars
-import logo from './logo.svg';
 import './App.css';
-// eslint-disable-next-line no-unused-vars
-import Header from "./component/header/Header";
-// eslint-disable-next-line no-unused-vars
-import {Router} from "react-router-dom";
-// eslint-disable-next-line no-unused-vars
-import About from "./component/pages/About";
-import AddTodo from "./component/AddTodo";
-import Todos from "./component/Todos";
-import axios from "axios";
-import {SERVER_URL} from "./util/StringUtil";
+import 'bootstrap/dist/css/bootstrap.min.css'
+import {Col, ButtonToolbar, Button} from "react-bootstrap";
 
 class App extends React.Component {
     state = {
         todos: []
     };
 
-    componentDidMount() {
-        axios.get(SERVER_URL + '/allusers')
-            .then(res => this.setState({ todos: res.data }));
-    }
-
-    // Toggle Complete
-    markComplete = (id) => {
-        this.setState({
-            todos: this.state.todos.map(todo => {
-                if(todo.id === id)
-                    todo.completed = !todo.completed;
-                return todo;
-            })
-        });
-    };
-
-    // Delete Todo
-    delTodo = (id) => {
-        axios.delete(SERVER_URL + '/allusers')
-            .then(res => this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)]}));
-    };
-
-    addTodo = (title) => {
-        /*
-        const newTodo = {
-          id: uuid.v4(),
-          title: title,
-          completed: false
-        }
-        this.setState({ todos: [...this.state.todos, newTodo]})
-        */
-        axios.post(SERVER_URL + '/allusers', {
-            name: title,
-            id: 1
-        })
-            .then(res => this.setState({
-                todos: [...this.state.todos, res.data]
-            }));
-    };
-
     render() {
         return (
-                <div className="App">
-                    <div className="container">
-                        <br />
-                            <React.Fragment>
-                                <AddTodo addTodo={this.addTodo} />
-                                <Todos todos={this.state.todos} markComplete = {this.markComplete} delTodo={this.delTodo}/>
-                            </React.Fragment>
-
+                //<div className="App">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <Col xs={3}>
+                                <ButtonToolbar>
+                                    <Button variant="primary">1</Button>
+                                    <Button variant="secondary">2</Button>
+                                    <Button variant="success">3</Button>
+                                    <Button variant="warning">4</Button>
+                                </ButtonToolbar>
+                            </Col>
+                            <Col xs={5}>
+                                col 2
+                            </Col>
+                            <Col xs={4}>
+                                col 3
+                            </Col>
+                        </div>
                     </div>
-                </div>
+                //</div>
         );
     }
 }
